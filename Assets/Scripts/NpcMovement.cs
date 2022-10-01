@@ -19,6 +19,7 @@ public class NpcMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, -45, 0);
         //Follow the player
         agent.destination = transformToFollow.position;
     }
