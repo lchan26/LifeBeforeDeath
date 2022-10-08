@@ -101,12 +101,14 @@ public class PlayerController : MonoBehaviour
                 left = false;
             }
         }  
-        // switch(other.gameObject.tag){
-        //     case "Up Wall": up = false; break;
-        //     case "Down Wall": down = false; break;
-        //     case "Left Wall": left = false; break;
-        //     default: right = false; break; 
-        // }
+        else if (other.gameObject.tag != "Untagged") {
+            switch(other.gameObject.tag){
+                case "Up Wall": up = false; break;
+                case "Down Wall": down = false; break;
+                case "Left Wall": left = false; break;
+                default: right = false; break; 
+            }
+        }
     }
 
     void OnTriggerExit(Collider other) {
@@ -131,12 +133,13 @@ public class PlayerController : MonoBehaviour
                 left = true;
             }
         }  
-
-        // switch(other.gameObject.tag){
-        //     case "Up Wall": up = true; break;
-        //     case "Down Wall": down = true; break;
-        //     case "Left Wall": left = true; break;
-        //     default: right = true; break; 
-        // }
-    }
+        if (other.gameObject.tag != "Untagged") {
+            switch(other.gameObject.tag){
+                case "Up Wall": up = true; break;
+                case "Down Wall": down = true; break;
+                case "Left Wall": left = true; break;
+                default: right = true; break; 
+            }
+        }
+    }  
 }
