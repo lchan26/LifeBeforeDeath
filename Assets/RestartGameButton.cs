@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChange : MonoBehaviour
+public class RestartGameButton : MonoBehaviour
 {
-    public void Scene1()
-    {
-        SceneManager.LoadScene("Scene1");
-        Debug.Log("Start Button is pressed");
+    public void callLoadScene(){
+        SceneManager.LoadScene("Oct14");
     }
+
     // Start is called before the first frame update
     void Start()
     {
