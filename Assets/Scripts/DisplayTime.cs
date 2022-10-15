@@ -5,7 +5,7 @@ using TMPro;
 
 public class DisplayTime : MonoBehaviour
 {
-    public Timer internalTimer;
+    [SerializeField] private Timer internalTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,9 @@ public class DisplayTime : MonoBehaviour
     void Update()
     {
         TextMeshProUGUI textmeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-        textmeshPro.SetText("{0}",internalTimer.TimeLeft);
-        
+        var minutes = Mathf.Floor(internalTimer.TimeLeft / 60);
+        var seconds = Mathf.Floor(internalTimer.TimeLeft - (minutes * 60));
+        textmeshPro.SetText("{0}: {1}", minutes, seconds);  
 
     }
 }
