@@ -16,7 +16,12 @@ public class ObjectSort : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       sprite.sortingOrder = (int)(cam.WorldToScreenPoint(transform.position).y * -100);   
+        //float minX = col.bounds.center.x - col.bounds.size.x / 2;
+        //float maxX = col.bounds.center.x + col.bounds.size.x / 2;
+        //float minZ = col.bounds.center.z - col.bounds.size.z / 2;
+        //float maxZ = col.bounds.center.z - col.bounds.size.z / 2;
+
+        sprite.sortingOrder = (int)(cam.WorldToScreenPoint(transform.position).y * -100);   
     }
 
 }
