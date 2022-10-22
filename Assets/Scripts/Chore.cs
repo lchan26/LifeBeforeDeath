@@ -6,8 +6,9 @@ public class Chore : MonoBehaviour
 {
     [HideInInspector] public bool completed = false;
 
+    [SerializeField] private float holdDuration;
+    private float holdTimer;
     private bool inPlayerRange = false;
-
     private ChoreManager choreManager;
     void Start()
     {
@@ -23,11 +24,19 @@ public class Chore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!completed && inPlayerRange && Input.GetKeyDown(KeyCode.Space))
+        if (!completed && inPlayerRange && Input.GetKey(KeyCode.Space))
         {
-            completed = true;
-            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-            choreManager.onChoreComplete();
+            holdTimer += Time.deltaTime;
+            if (holdTimer > holdDuration)
+            {
+                completed = true;
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                choreManager.onChoreComplete();
+            }
+        }
+        else
+        {
+            holdTimer = 0;
         }
     }
 

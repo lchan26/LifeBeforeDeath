@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completed: 0
+  holdDuration: 1
 --- !u!1 &1209575932
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completed: 0
+  holdDuration: 1
 --- !u!1 &2065099777
 GameObject:
   m_ObjectHideFlags: 0
