@@ -47,7 +47,7 @@ public class FetchChore : Chore
                 gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
             }
         }
-        if (other.gameObject.Equals(item))
+        else if (other.gameObject.Equals(item))
         {
             inItemRange = true;
         }
@@ -63,7 +63,7 @@ public class FetchChore : Chore
                 gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             }
         }
-        if (other.gameObject.Equals(item))
+        else if (other.gameObject.Equals(item))
         {
             inItemRange = false;
         }
