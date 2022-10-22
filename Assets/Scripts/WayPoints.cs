@@ -6,10 +6,10 @@ public class WayPoints : MonoBehaviour
 {
     private void OnDrawGizmos()
     {
-        foreach( Transform t in transform)
+        foreach (Transform t in transform)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(t.position, 1f); 
+            Gizmos.DrawWireSphere(t.position, 1f);
         }
 
         Gizmos.color = Color.red;
@@ -21,12 +21,20 @@ public class WayPoints : MonoBehaviour
         Gizmos.DrawLine(transform.GetChild(transform.childCount - 1).position, transform.GetChild(0).position);
     }
 
-    //public Transform GetNextWayPoint (Transform currentWaypoint)
-    //{
-    //    if (currentWaypoint == null)
-    //    {
-    //        return transform.GetChild(0);
-    //    }
-    //    return null;
-    //}
+    public Transform GetNextWaypoint (Transform currentWaypoint)
+    {
+        if (currentWaypoint == null)
+        {
+            return transform.GetChild(0);
+        }
+        
+        if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
+        {
+            return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
+        }
+        else
+        {
+            return transform.GetChild(0);
+        }
+    }
 }
