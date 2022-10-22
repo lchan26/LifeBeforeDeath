@@ -6,15 +6,6 @@ using UnityEngine.SceneManagement;
 public class ChoreManager : MonoBehaviour
 {
     [SerializeField] List<Chore> chores;
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
-
     public void onChoreComplete()
     {
         bool completed = true;
