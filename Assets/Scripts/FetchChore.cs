@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class FetchChore : Chore
 {
-    [SerializeField] private float holdDuration;
-
     [SerializeField] private GameObject item;
-
-    private float holdTimer;
     private bool inPlayerRange = false;
-    private bool inItemRange = false;
-
+    public bool inItemRange = false;
     private bool hasItem = false;
     private ChoreManager choreManager;
     void Start()
@@ -28,24 +23,17 @@ public class FetchChore : Chore
     // Update is called once per frame
     void Update()
     {
-        if (!completed && inPlayerRange && Input.GetKey(KeyCode.Space))
+        if (!completed && hasItem && inPlayerRange && Input.GetKey(KeyCode.Space))
         {
-            holdTimer += Time.deltaTime;
-            if (holdTimer > holdDuration)
-            {
-                completed = true;
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-                choreManager.onChoreComplete();
-            }
-        }
-        else
-        {
-            holdTimer = 0;
+            completed = true;
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            choreManager.onChoreComplete();
         }
 
         if (inItemRange && Input.GetKeyDown(KeyCode.Space))
         {
             hasItem = true;
+            Destroy(item);
         }
     }
 

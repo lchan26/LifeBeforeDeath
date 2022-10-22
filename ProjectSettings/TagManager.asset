@@ -8,6 +8,7 @@ TagManager:
   - Down Wall
   - Left Wall
   - Right Wall
+  - Item
   layers:
   - Default
   - TransparentFX
