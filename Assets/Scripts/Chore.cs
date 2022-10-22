@@ -12,7 +12,7 @@ public class Chore : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        
+
         choreManager = FindObjectOfType<ChoreManager>().GetComponent<ChoreManager>();
         if (choreManager.Equals(null))
         {
@@ -36,6 +36,10 @@ public class Chore : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inPlayerRange = true;
+            if (!completed)
+            {
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
+            }
         }
     }
 
@@ -44,6 +48,10 @@ public class Chore : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inPlayerRange = false;
+            if (!completed)
+            {
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            }
         }
     }
 }
