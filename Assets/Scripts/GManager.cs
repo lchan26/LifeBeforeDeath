@@ -26,6 +26,6 @@ public class GManager : MonoBehaviour
     void GameOver()
     {
         print("ah!");
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOverScene");
     }
 }
