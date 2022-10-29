@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             // Vector3 moveTo = new Vector3(-19.1170f, 0.0f, 4.3f);
             // // Vector3 translation = t
             // // transform.Translate()
-            float step = 2.0f * Time.deltaTime;
+            float step = speed * Time.deltaTime;
             // Vector3 moveTo1 = new Vector3(-22.590f, 0.0f, 14.172f);
             // if (transform.position != moveTo1)
             // {
