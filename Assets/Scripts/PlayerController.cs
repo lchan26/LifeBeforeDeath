@@ -6,10 +6,29 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     float speed = 5;
-    public bool inBotStair = false;
-    public bool inTopStair = false;
+    [SerializeField]
+    private bool inBotStair = false;
+    [SerializeField]
+    private bool inTopStair = false;
+    [SerializeField]
+    private bool isBeingSent = false;
 
-    // Update is called once per frame
+    [SerializeField]
+    private Collider botStairsCollider;
+    [SerializeField]
+    private Collider topStairsCollider;
+
+    private Vector3 botStairsPos;
+    private Vector3 topStairsPos;
+
+    private void Start()
+    {
+        botStairsPos = botStairsCollider.bounds.center;
+        topStairsPos = topStairsCollider.bounds.center;
+        botStairsPos.y = 0;
+        topStairsPos.y = 0;
+    }
+
     void Update()
     {
         Vector3 dir = Vector3.zero;
@@ -19,95 +38,80 @@ public class PlayerController : MonoBehaviour
             // move up
             dir += Vector3.left;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
-        {
-            // move left
-            dir += Vector3.back;
-        }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
         {
             // move down
             dir += Vector3.right;
         }
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
+        {
+            // move left
+            dir += Vector3.back;
+
+            // handle stairs movement
+            if (inTopStair) SendDownstairs();
+        }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))
         {
             // move right
             dir += Vector3.forward;
+
+            // handle stairs movement
+            if (inBotStair) SendUpstairs();
         }
 
-        gameObject.GetComponent<Rigidbody>().velocity = speed * dir.normalized;
+        if (!isBeingSent)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = speed * dir.normalized;
+        }
+    }
 
-        if (inBotStair == true) 
+    void SendUpstairs()
+    {
+        inTopStair = false;
+        isBeingSent = true;
+
+        //transform.position = topStairsPos;
+    }
+
+    IEnumerator InterpolateThroughStairs(Vector3 targetPos)
+    {
+        float step = speed * Time.deltaTime;
+        while (true)
         {
-            // Vector3 currPos = transform.position;
-            // Vector3 moveTo = new Vector3(-19.1170f, 0.0f, 4.3f);
-            // // Vector3 translation = t
-            // // transform.Translate()
-            float step = speed * Time.deltaTime;
-            // Vector3 moveTo1 = new Vector3(-19.1170f, 0.0f, 4.3f);
-            // if (transform.position != moveTo1)
-            // {
-            //     transform.position = Vector3.MoveTowards(transform.position, moveTo1, step);   
-            // }
-            // transform.position = Vector3.MoveTowards(transform.position, moveTo, step);
-            Vector3 moveTo = new Vector3(-22.857f, 0.0f, 13.051f);
-            transform.position = Vector3.MoveTowards(transform.position, moveTo, step);
+            transform.position = Vector3.MoveTowards(transform.position, topStairsPos, step);
+            if (inTopStair)
+            {
+                isBeingSent = false;
+                break;
+            }
+            yield return null;
         }
-        if (inTopStair == true) 
-        {
-            // Vector3 currPos = transform.position;
-            // Vector3 moveTo = new Vector3(-19.1170f, 0.0f, 4.3f);
-            // // Vector3 translation = t
-            // // transform.Translate()
-            float step = speed * Time.deltaTime;
-            // Vector3 moveTo1 = new Vector3(-22.590f, 0.0f, 14.172f);
-            // if (transform.position != moveTo1)
-            // {
-            //     transform.position = Vector3.MoveTowards(transform.position, moveTo1, step);   
-            // }
-            // transform.position = Vector3.MoveTowards(transform.position, moveTo, step);
-            Vector3 moveTo = new Vector3(-19.398f, 0.0f, 4.944f);
-            transform.position = Vector3.MoveTowards(transform.position, moveTo, step);
-        }
+    }
+
+    void SendDownstairs()
+    {
+        inBotStair = false;
+        isBeingSent = true;
+
+        transform.position = botStairsPos;
+
+        //float step = speed * Time.deltaTime;
+        //transform.position = Vector3.MoveTowards(transform.position, botStairsPos, step);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("StairBottom"))
         {
-            if (inTopStair == true)
-            {
-                inTopStair = false;
-            }
-            else
-            {
-                inBotStair = true;
-            }
+            isBeingSent = false;
+            inBotStair = true;
         }
 
         else if (other.CompareTag("StairTop"))
         {
-            if (inBotStair == true)
-            {
-                inBotStair = false;
-            }
-            else
-            {
-                inTopStair = true;
-            }
+            isBeingSent = false;
+            inTopStair = true;
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        // if (other.CompareTag("StairBottom"))
-        // {
-        //     inBotStair = false;
-        // }
-
-        // if (other.CompareTag("StairTop"))
-        // {
-        //     inTopStair = false;
-        // }
     }
 }

@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1332399808169380531, guid: 50b54dfa5ed49bc468e293ee2e6e33ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.1
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 1332399808169380531, guid: 50b54dfa5ed49bc468e293ee2e6e33ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1332399808169380531, guid: 50b54dfa5ed49bc468e293ee2e6e33ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1332399808169380531, guid: 50b54dfa5ed49bc468e293ee2e6e33ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -326,7 +326,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c464d1fd93a608449a866d324fa252d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
+  inBotStair: 0
+  inTopStair: 0
+  isBeingSent: 0
+  botStairsCollider: {fileID: 630702463}
+  topStairsCollider: {fileID: 508100870}
 --- !u!1 &212218085
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +657,7 @@ GameObject:
   - component: {fileID: 508100869}
   m_Layer: 0
   m_Name: StaircaseTop
-  m_TagString: Untagged
+  m_TagString: StairTop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,7 +685,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508100868}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -713,7 +718,7 @@ GameObject:
   - component: {fileID: 630702462}
   m_Layer: 0
   m_Name: StaircaseBottom
-  m_TagString: Untagged
+  m_TagString: StairBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,7 +746,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630702461}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
