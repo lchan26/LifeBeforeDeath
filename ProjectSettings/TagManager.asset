@@ -8,6 +8,9 @@ TagManager:
   - Down Wall
   - Left Wall
   - Right Wall
+  - Item
+  - StairBottom
+  - StairTop
   layers:
   - Default
   - TransparentFX

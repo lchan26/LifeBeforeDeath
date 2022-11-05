@@ -5,28 +5,23 @@ using UnityEngine;
 public class ObjectSort : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private bool topLeft;
     private SpriteRenderer sprite;
-
-    private Vector3 colliderBounds;
     private Camera cam;
     void Start()
     {
         sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         cam = Camera.main;
-        colliderBounds = this.GetComponent<BoxCollider>().bounds.size;
     }
 
     // Update is called once per frame
     void Update()
     {
-        sprite.sortingOrder = (int)(cam.WorldToScreenPoint(transform.position).y * -100);
-    }
+        //float minX = col.bounds.center.x - col.bounds.size.x / 2;
+        //float maxX = col.bounds.center.x + col.bounds.size.x / 2;
+        //float minZ = col.bounds.center.z - col.bounds.size.z / 2;
+        //float maxZ = col.bounds.center.z - col.bounds.size.z / 2;
 
-
-    void OnDrawGizmos()
-    {
-        
+        sprite.sortingOrder = (int)(cam.WorldToScreenPoint(transform.position).y * -100);   
     }
 
 }
