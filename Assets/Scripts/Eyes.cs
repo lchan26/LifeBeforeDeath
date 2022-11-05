@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -95,12 +96,16 @@ public class Eyes : MonoBehaviour
                 // If it hits, send an event for when a target is seen
                 if (hit.collider != null && hit.collider.gameObject.Equals(target))
                 {
-                    inSight.Add(target);
-                    onSeeTarget.Invoke(target);
+                    print("collided");
+
+
+                    SceneManager.LoadScene("GameOverScene");
+                    //inSight.Add(target);
+                    //onSeeTarget.Invoke(target);
                 }
             }
         }
-        print("Checking targets");
+        // print("Checking targets");
 
         if (myCollider != null)
         {
