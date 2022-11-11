@@ -11,6 +11,8 @@ public class WayPointMover : MonoBehaviour
     [SerializeField] private float distanceThreshold = 0.1f;
 
     private Transform currentWaypoint;
+    private Vector3 newDirection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,12 @@ public class WayPointMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * m_Speed, Space.World);
+        //ORIGINAL transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
+        transform.forward = currentWaypoint.position - transform.position;
+     
+
         if (Vector3.Distance (transform.position,currentWaypoint.position) < distanceThreshold)
         {
             currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);

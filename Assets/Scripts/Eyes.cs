@@ -99,7 +99,7 @@ public class Eyes : MonoBehaviour
                     print("collided");
 
 
-                    SceneManager.LoadScene("GameOverScene");
+                    //SceneManager.LoadScene("GameOverScene");
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
                 }
