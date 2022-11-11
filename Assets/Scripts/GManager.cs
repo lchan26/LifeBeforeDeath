@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GManager : MonoBehaviour
 {
     [SerializeField] private Timer internalTimer;
+
+    private bool isLoaded;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,11 @@ public class GManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (internalTimer.TimeLeft < 1)
+        if (internalTimer.TimeLeft == internalTimer.timeLimit)
+        {
+            isLoaded = true;
+        }
+        if (internalTimer.TimeLeft < 1 & isLoaded)
         {
             GameOver();
         }
@@ -25,7 +31,6 @@ public class GManager : MonoBehaviour
 
     void GameOver()
     {
-        print("ah!");
         SceneManager.LoadScene("GameOverScene");
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RestartGameButton : MonoBehaviour
 {
     public void callLoadScene(){
-        SceneManager.LoadScene("EliseOct29");
+        SceneManager.LoadScene("OFFICIAL GAMEPLAY");
     }
 
     // Start is called before the first frame update

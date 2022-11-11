@@ -91,15 +91,12 @@ public class Eyes : MonoBehaviour
             {
 
                 Physics.Raycast(transform.position, direction, out RaycastHit hit, viewRange, hitLayerMask, QueryTriggerInteraction.Ignore);
-                print("In angle");
+               
 
                 // If it hits, send an event for when a target is seen
                 if (hit.collider != null && hit.collider.gameObject.Equals(target))
                 {
-                    print("collided");
-
-
-                    //SceneManager.LoadScene("GameOverScene");
+                    SceneManager.LoadScene("GameOverScene");
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
                 }

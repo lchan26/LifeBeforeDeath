@@ -7,7 +7,7 @@ public class StartScene : MonoBehaviour
 {
     public void LoadGameLevel(int GameScene)
     {
-        SceneManager.LoadScene("EliseOct29");
+        SceneManager.LoadScene("OFFICIAL GAMEPLAY");
     }
     // Start is called before the first frame update
     void Start()
