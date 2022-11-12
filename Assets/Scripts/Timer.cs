@@ -7,10 +7,16 @@ public class Timer : MonoBehaviour
     [Tooltip("The total time limit for this level in seconds")]
     //[SerializeField] private int timeLimit = 120;
     public int timeLimit = 120;
-    public float TimeLeft { get; private set; } 
+    public float TimeLeft { get; set; } 
+    
+
+    void Start()
+    {
+        TimeLeft = timeLimit;
+    }
 
     void Update()
     {
-        TimeLeft = timeLimit - Time.timeSinceLevelLoad;
+        TimeLeft = TimeLeft - Time.deltaTime;
     }
 }
