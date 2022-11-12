@@ -66,30 +66,17 @@ public class PlayerController : MonoBehaviour
             {
                 // move up
                 dir += Vector3.left;
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Up"))
-                {
-                    anim.SetTrigger("Up");
-                }
-
             }
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
             {
                 // move down
                 dir += Vector3.right;
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Down"))
-                {
-                    anim.SetTrigger("Down");
-                }
             }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
             {
                 // move left
                 dir += Vector3.back;
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Left"))
-                {
-                    anim.SetTrigger("Left");
-                }
-
+                
                 // handle stairs movement
                 if (inTopStair) isBeingSentDown = true;
             }
@@ -97,15 +84,45 @@ public class PlayerController : MonoBehaviour
             {
                 // move right
                 dir += Vector3.forward;
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Right"))
-                {
-                    anim.SetTrigger("Right");
-                }
 
                 // handle stairs movement
                 if (inBotStair) isBeingSentUp = true;
             }
-        
+
+            //separate checking for animations (with if/else)
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Up"))
+                {
+                    anim.SetTrigger("Up");
+                }
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Down"))
+                {
+                    anim.SetTrigger("Down");
+                }
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Left"))
+                {
+                    anim.SetTrigger("Left");
+                }
+            }
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Right"))
+                {
+                    anim.SetTrigger("Right");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("Idle");
+            }
+
             gameObject.GetComponent<Rigidbody>().velocity = speed * dir.normalized;
         }
     }
