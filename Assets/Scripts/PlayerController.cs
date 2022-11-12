@@ -66,20 +66,29 @@ public class PlayerController : MonoBehaviour
             {
                 // move up
                 dir += Vector3.left;
-                anim.SetTrigger("Up");
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Up"))
+                {
+                    anim.SetTrigger("Up");
+                }
 
             }
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
             {
                 // move down
                 dir += Vector3.right;
-                anim.SetTrigger("Down");
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Down"))
+                {
+                    anim.SetTrigger("Down");
+                }
             }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
             {
                 // move left
                 dir += Vector3.back;
-                anim.SetTrigger("Left");
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Left"))
+                {
+                    anim.SetTrigger("Left");
+                }
 
                 // handle stairs movement
                 if (inTopStair) isBeingSentDown = true;
@@ -88,7 +97,10 @@ public class PlayerController : MonoBehaviour
             {
                 // move right
                 dir += Vector3.forward;
-                anim.SetTrigger("Right");
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Right"))
+                {
+                    anim.SetTrigger("Right");
+                }
 
                 // handle stairs movement
                 if (inBotStair) isBeingSentUp = true;
