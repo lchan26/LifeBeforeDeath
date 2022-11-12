@@ -20,12 +20,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 botStairsPos;
     private Vector3 topStairsPos;
 
+    private Animator anim;
+
     private void Start()
     {
         botStairsPos = botStairsCollider.bounds.center;
         topStairsPos = topStairsCollider.bounds.center;
         botStairsPos.y = 0;
         topStairsPos.y = 0;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -62,16 +66,20 @@ public class PlayerController : MonoBehaviour
             {
                 // move up
                 dir += Vector3.left;
+                anim.SetTrigger("Up");
+
             }
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
             {
                 // move down
                 dir += Vector3.right;
+                anim.SetTrigger("Down");
             }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
             {
                 // move left
                 dir += Vector3.back;
+                anim.SetTrigger("Left");
 
                 // handle stairs movement
                 if (inTopStair) isBeingSentDown = true;
@@ -80,6 +88,7 @@ public class PlayerController : MonoBehaviour
             {
                 // move right
                 dir += Vector3.forward;
+                anim.SetTrigger("Right");
 
                 // handle stairs movement
                 if (inBotStair) isBeingSentUp = true;
