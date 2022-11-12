@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Timer timer; 
+    private Animator anim;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
         topStairsPos = topStairsCollider.bounds.center;
         botStairsPos.y = 0;
         topStairsPos.y = 0;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
             {
                 // move left
                 dir += Vector3.back;
-
+                
                 // handle stairs movement
                 if (inTopStair) isBeingSentDown = true;
             }
@@ -87,7 +90,41 @@ public class PlayerController : MonoBehaviour
                 // handle stairs movement
                 if (inBotStair) isBeingSentUp = true;
             }
-        
+
+            //separate checking for animations (with if/else)
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Up"))
+                {
+                    anim.SetTrigger("Up");
+                }
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Down"))
+                {
+                    anim.SetTrigger("Down");
+                }
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Left"))
+                {
+                    anim.SetTrigger("Left");
+                }
+            }
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))
+            {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walk_Right"))
+                {
+                    anim.SetTrigger("Right");
+                }
+            }
+            else
+            {
+                anim.SetTrigger("Idle");
+            }
+
             gameObject.GetComponent<Rigidbody>().velocity = speed * dir.normalized;
         }
     }
