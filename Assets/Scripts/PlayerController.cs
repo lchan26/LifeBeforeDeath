@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 botStairsPos;
     private Vector3 topStairsPos;
 
+    [SerializeField]
+    private Timer timer; 
+
     private void Start()
     {
         botStairsPos = botStairsCollider.bounds.center;
@@ -93,6 +96,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("StairBottom")) inBotStair = true;
         else if (other.CompareTag("StairTop")) inTopStair = true;
+        else if (other.CompareTag("Enemy")){
+            transform.position = new Vector3(-3.4f, 0, 5.6f);
+            timer.TimeLeft = timer.TimeLeft - 10;
+        }
     }
 
     void OnTriggerExit(Collider other)
