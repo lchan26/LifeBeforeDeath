@@ -6,18 +6,7 @@ using UnityEngine.SceneManagement;
 public class RestartGameButton : MonoBehaviour
 {
     public void callLoadScene(){
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().StopMusic();
         SceneManager.LoadScene("OFFICIAL GAMEPLAY");
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

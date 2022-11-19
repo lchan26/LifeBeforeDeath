@@ -18,7 +18,7 @@ public class ChoreManager : MonoBehaviour
         }
         if (completed)
         {
-            SceneManager.LoadScene("WinScene");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }
