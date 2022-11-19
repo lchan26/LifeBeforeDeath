@@ -7,6 +7,7 @@ public class StartScene : MonoBehaviour
 {
     public void LoadGameLevel(int GameScene)
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().StopMusic();
         SceneManager.LoadScene("OFFICIAL GAMEPLAY");
     }
     // Start is called before the first frame update
