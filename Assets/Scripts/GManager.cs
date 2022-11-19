@@ -31,6 +31,7 @@ public class GManager : MonoBehaviour
 
     void GameOver()
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().PlayMusic();
         SceneManager.LoadScene("GameOverScene");
     }
 }

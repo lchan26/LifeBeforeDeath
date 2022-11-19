@@ -7,6 +7,7 @@ public class ExitGameplayToMainMenu : MonoBehaviour
 {
     public void GoToMainMenu()
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().PlayMusic();
         SceneManager.LoadScene("MenuScene");
     }
 }
