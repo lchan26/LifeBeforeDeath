@@ -37,6 +37,8 @@ public class Eyes : MonoBehaviour
 
     private Collider myCollider;
 
+    public Animator anim;
+
     public Vector3 MoveDirection { get; private set; }
 
 
@@ -98,6 +100,10 @@ public class Eyes : MonoBehaviour
                 // If it hits, send an event for when a target is seen
                 if (hit.collider != null && hit.collider.gameObject.Equals(target))
                 {
+                    if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Caught"))
+                    {
+                        anim.SetTrigger("Caught");
+                    }
                     SceneManager.LoadScene("GameOverScene");
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
