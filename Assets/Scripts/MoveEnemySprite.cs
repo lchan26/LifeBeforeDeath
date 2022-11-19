@@ -10,23 +10,30 @@ public class MoveEnemySprite : MonoBehaviour
     private int currentDir = 3;
     public Animator anim;
 
+    private Vector3 prevPos;
+    private Vector3 currPos;
+
     // Start is called before the first frame update
     void Start()
     {
         internalEnemy = GameObject.Find("Enemy");
+        prevPos = internalEnemy.transform.position;
+        currPos = internalEnemy.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = internalEnemy.transform.position;
+        currPos = internalEnemy.transform.position;
         List<float> dotProducts = new List<float>();
         // Index 0 is up, 1 is back, 2 is right, 3 is left
-        // print(enemyEyes.MoveDirection);
-        dotProducts.Add(Vector3.Dot(enemyEyes.MoveDirection, Vector3.left));
-        dotProducts.Add(Vector3.Dot(enemyEyes.MoveDirection, Vector3.right));
-        dotProducts.Add(Vector3.Dot(enemyEyes.MoveDirection, Vector3.forward));
-        dotProducts.Add(Vector3.Dot(enemyEyes.MoveDirection, Vector3.back));
+        //print(enemyEyes.MoveDirection);
+        Vector3 direction = (currPos - prevPos).normalized;
+        dotProducts.Add(Vector3.Dot(direction, Vector3.left));
+        dotProducts.Add(Vector3.Dot(direction, Vector3.right));
+        dotProducts.Add(Vector3.Dot(direction, Vector3.forward));
+        dotProducts.Add(Vector3.Dot(direction, Vector3.back));
 
         float max_dist = Mathf.NegativeInfinity;
         for (int i = 0; i < 4; i++) {
@@ -94,6 +101,7 @@ public class MoveEnemySprite : MonoBehaviour
         //     directionChanged = false;
         // }
 
+        print(currentDir);
         if (currentDir == 0)
         {
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Walk_Up"))
@@ -122,5 +130,6 @@ public class MoveEnemySprite : MonoBehaviour
                 anim.SetTrigger("Left");
             }
         }
+        prevPos = transform.position = internalEnemy.transform.position;
     }
 }
