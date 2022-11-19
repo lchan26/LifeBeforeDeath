@@ -104,7 +104,8 @@ public class Eyes : MonoBehaviour
                     {
                         anim.SetTrigger("Caught");
                     }
-                    SceneManager.LoadScene("GameOverScene");
+                    // SceneManager.LoadScene("GameOverScene");
+                    GameObject.Find("Player").transform.position = new Vector3(-5.43f, 0.0f, 7.89f);
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
                 }
