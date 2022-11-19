@@ -239,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3442e9c212e841d488bfcfce334f097f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4cfad20cca2d2834aa8659c866f49b78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f25b95b9544d5c4eb8387b3d54ce70e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2c5d6be7832b1640a1db871afa53abb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4a925111d2c344108965f5b836f3bad6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7fbc1d3bd8482d418d004a552427ed6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1620,9 +1620,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1683966342}
   - component: {fileID: 1683966341}
+  - component: {fileID: 1683966343}
   m_Layer: 0
   m_Name: MenuAudio
-  m_TagString: Untagged
+  m_TagString: MenuMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1738,6 +1739,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683966343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683966340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e1f7c3e1baaae45a5b34b4863fcd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1683966341}
 --- !u!1 &1957937413
 GameObject:
   m_ObjectHideFlags: 0
