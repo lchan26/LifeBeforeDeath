@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 botStairsPos;
     private Vector3 topStairsPos;
 
+    private Animator anim;
+
     [SerializeField]
     private Timer timer; 
-    private Animator anim;
 
     private void Start()
     {
