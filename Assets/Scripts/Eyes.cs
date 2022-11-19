@@ -25,6 +25,9 @@ public class Eyes : MonoBehaviour
     [SerializeField, Tooltip("Collision masks to hit for raycast")] 
     private LayerMask hitLayerMask;
 
+    [SerializeField, Tooltip("Timer to substract time if caught")]
+    private Timer internalTimer;
+
     [SerializeField, Tooltip("Current objects to check if in sight")] 
     private List<GameObject> targets = new List<GameObject>();
 
@@ -106,6 +109,7 @@ public class Eyes : MonoBehaviour
                     }
                     // SceneManager.LoadScene("GameOverScene");
                     GameObject.Find("Player").transform.position = new Vector3(-5.43f, 0.0f, 7.89f);
+                   
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
                 }
