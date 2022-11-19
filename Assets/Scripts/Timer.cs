@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     public int timeLimit = 120;
     public float TimeLeft { get; set; } 
     
-
+    
     void Start()
     {
         TimeLeft = timeLimit;

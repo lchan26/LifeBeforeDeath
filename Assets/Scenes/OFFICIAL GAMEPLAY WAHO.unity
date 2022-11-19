@@ -329,6 +329,7 @@ MonoBehaviour:
   speed: 5
   botStairsCollider: {fileID: 630702463}
   topStairsCollider: {fileID: 508100870}
+  timer: {fileID: 1706330933}
 --- !u!1 &212218085
 GameObject:
   m_ObjectHideFlags: 0
