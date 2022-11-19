@@ -8,6 +8,7 @@ public class BasicChore : Chore
     private float holdTimer;
     private bool inPlayerRange = false;
     private ChoreManager choreManager;
+    public Animator anim;
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -25,8 +26,14 @@ public class BasicChore : Chore
         if (!completed && inPlayerRange && Input.GetKey(KeyCode.Space))
         {
             holdTimer += Time.deltaTime;
+            if (anim != null) {
+                anim.SetBool("Space_Held", true);
+            }
             if (holdTimer > holdDuration)
             {
+                if (anim != null) {
+                    anim.SetBool("Space_Held", false);
+                }
                 completed = true;
                 gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
                 choreManager.onChoreComplete();

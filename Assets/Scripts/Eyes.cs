@@ -37,6 +37,8 @@ public class Eyes : MonoBehaviour
 
     private Collider myCollider;
 
+    public Vector3 MoveDirection { get; private set; }
+
 
 
     private void Start()
@@ -83,14 +85,14 @@ public class Eyes : MonoBehaviour
         {
 
             // Cast a ray in the direction of the target for the distance of the view range
-            Vector3 direction = (target.transform.position - transform.position).normalized;
+            MoveDirection = (target.transform.position - transform.position).normalized;
 
-            float angle = Vector3.Angle(transform.forward, direction);
+            float angle = Vector3.Angle(transform.forward, MoveDirection);
 
             if (angle < viewAngle / 2)
             {
 
-                Physics.Raycast(transform.position, direction, out RaycastHit hit, viewRange, hitLayerMask, QueryTriggerInteraction.Ignore);
+                Physics.Raycast(transform.position, MoveDirection, out RaycastHit hit, viewRange, hitLayerMask, QueryTriggerInteraction.Ignore);
                
 
                 // If it hits, send an event for when a target is seen
