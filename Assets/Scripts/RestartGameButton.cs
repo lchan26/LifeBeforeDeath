@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RestartGameButton : MonoBehaviour
 {
     public void callLoadScene(){
-        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().StopMusic();
+        //GameObject.FindGameObjectWithTag("OverMusic").GetComponent<MenuMusicClass>().StopMusic();
         SceneManager.LoadScene("OFFICIAL GAMEPLAY");
     }
 }

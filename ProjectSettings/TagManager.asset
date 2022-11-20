@@ -13,6 +13,7 @@ TagManager:
   - StairTop
   - Enemy
   - MenuMusic
+  - OverMusic
   layers:
   - Default
   - TransparentFX

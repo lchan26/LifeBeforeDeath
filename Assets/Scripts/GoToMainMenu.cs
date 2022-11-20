@@ -7,6 +7,8 @@ public class GoToMainMenu : MonoBehaviour
 {
     public void callLoadMainMenu()
     {
+
+        // GameObject.FindGameObjectWithTag("OverMusic").GetComponent<MenuMusicClass>().StopMusic();
         SceneManager.LoadScene("MenuScene");
     }
     // Start is called before the first frame update
