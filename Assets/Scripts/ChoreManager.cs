@@ -19,7 +19,7 @@ public class ChoreManager : MonoBehaviour
         if (completed)
         {
 
-            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().PlayMusic();
+            //GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusicClass>().PlayMusic();
             SceneManager.LoadScene("GameOverScene");
         }
     }
