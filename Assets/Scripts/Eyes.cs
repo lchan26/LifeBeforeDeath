@@ -35,6 +35,7 @@ public class Eyes : MonoBehaviour
     private float checkForTargetTime = 0.3f;
     private float currentCheckForTargetTime;
 
+    [SerializeField] private List<GameObject> chores = new List<GameObject>();
 
     private HashSet<GameObject> inSight = new HashSet<GameObject>();
 
@@ -103,13 +104,29 @@ public class Eyes : MonoBehaviour
                 // If it hits, send an event for when a target is seen
                 if (hit.collider != null && hit.collider.gameObject.Equals(target))
                 {
+                    foreach (GameObject i in chores)
+                    {
+                       /* i.SetActive(false);*/
+                        print(i);
+
+                        i.GetComponent<BasicChore>().Invisible();
+                    }
+
+                   
+
                     if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Caught"))
                     {
-                        anim.SetTrigger("Caught");
+                        
+                            anim.SetTrigger("Caught");
                     }
                     // SceneManager.LoadScene("GameOverScene");
                     GameObject.Find("Player").transform.position = new Vector3(-5.43f, 0.0f, 7.89f);
-                   
+                    foreach (GameObject i in chores)
+                    {
+
+                        /*i.SetActive(true);*/
+                        i.GetComponent<BasicChore>().Visible();
+                    }
                     //inSight.Add(target);
                     //onSeeTarget.Invoke(target);
                 }
